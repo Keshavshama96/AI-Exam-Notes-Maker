@@ -6,7 +6,7 @@ import { getCurrentUser } from "./services/api";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
-export const serverUrl ="http://localhost:8000"
+export const serverUrl ="https://ai-exam-notes-maker-server.onrender.com"
 import History from "./pages/History";
 import Pricing from "./pages/Pricing";
 import Notes from "./pages/Notes";
