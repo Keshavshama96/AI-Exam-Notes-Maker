@@ -21,11 +21,12 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 const handleSignOut = async () => {
     try {
-        await axios.get(serverUrl+ "/api/auth/logout" , {withCredentials:true})
-        dispatch(setUserData(null))
-        navigate("/auth")
-    }catch(error){
+        await axios.get(serverUrl + "/api/auth/logout", {withCredentials:true})
+    } catch(error) {
       console.log(error)
+    } finally {
+      dispatch(setUserData(null))
+      navigate("/auth")
     }
   }
 
