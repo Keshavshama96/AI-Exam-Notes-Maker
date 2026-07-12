@@ -45,7 +45,7 @@ function Notes() {
     px-4 py-2 rounded-full
     bg-white/10
     border border-white/20
-    text-white text-sm' onClick={()=>navigate("pricing")}>
+    text-white text-sm' onClick={()=>navigate("/pricing")}>
 
     <span className='text-xl'>🔷</span>
     <span>{credits}</span>
