@@ -2,6 +2,20 @@ import axios from "axios";
 import { serverUrl } from "../App";
 import { setUserData } from "../redux/userSlice";
 
+// export const getCurrentUser = async (dispatch) => {
+//   try {
+//     const result = await axios.get(
+//       serverUrl + "/api/user/currentuser",
+//       {
+//         withCredentials: true,
+//       }
+//     );
+    
+//     dispatch(setUserData(result.data))
+//      } catch (error) {
+//     console.log(error);
+//   }
+// }
 export const getCurrentUser = async (dispatch) => {
   try {
     const result = await axios.get(
@@ -10,13 +24,16 @@ export const getCurrentUser = async (dispatch) => {
         withCredentials: true,
       }
     );
-    
-    dispatch(setUserData(result.data))
-     } catch (error) {
-    console.log(error);
-  }
-}
 
+    dispatch(setUserData(result.data));
+
+  } catch (error) {
+    console.log(error);
+
+    // ADD THIS
+    dispatch(setUserData(null));
+  }
+};
 
 export const generateNotes = async (payload) => {
   try {

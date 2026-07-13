@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../App";
 import { setUserData } from "../redux/userSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 function Navbar() {
 // taking data from the redux
@@ -19,16 +21,33 @@ const[showCredits,setShowCredits]=useState(false)
 const[showProfile,setShowProfile]=useState(false)
 const navigate = useNavigate()
 const dispatch = useDispatch()
+// const handleSignOut = async () => {
+//     try {
+//         await axios.get(serverUrl + "/api/auth/logout", {withCredentials:true})
+//     } catch(error) {
+//       console.log(error)
+//     } finally {
+//       dispatch(setUserData(null))
+//       navigate("/auth")
+//     }
+//   }
 const handleSignOut = async () => {
-    try {
-        await axios.get(serverUrl + "/api/auth/logout", {withCredentials:true})
-    } catch(error) {
-      console.log(error)
-    } finally {
-      dispatch(setUserData(null))
-      navigate("/auth")
-    }
+  try {
+    // Logout from Firebase
+    await signOut(auth);
+
+    // Logout from Backend
+    await axios.get(serverUrl + "/api/auth/logout", {
+      withCredentials: true,
+    });
+
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(setUserData(null));
+    navigate("/auth");
   }
+};
 
   return (
     <motion.div
