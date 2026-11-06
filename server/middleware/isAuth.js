@@ -15,7 +15,7 @@ const isAuth = async (req, res, next) => {
     }
 
     // Verify JWT using secret key
-    let verifyToken = jwt.verify(token, process.env.JWT_SECRET);
+    let verifyToken = jwt.verify(token, process.env.JWT_SECRET);//yhi pr new signature amcth bhi hota hai 
 
     // If token verification fails
     if (!verifyToken) {

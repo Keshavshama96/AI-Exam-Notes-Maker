@@ -8,7 +8,6 @@ export const googleAuth = async (req, res) => {
         const { name, email } = req.body;
 
         let user = await UserModel.findOne({ email });
-
         if (!user) {
             user = await UserModel.create({
                 name,email      
