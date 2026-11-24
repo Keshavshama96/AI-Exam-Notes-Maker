@@ -1,6 +1,6 @@
 
-const PRIMARY_MODEL = "gemini-3.8-flash";
-const FALLBACK_MODEL = "gemini-3.5-flash-lite";
+const PRIMARY_MODEL = "gemini-3.5-flash-lite";
+const FALLBACK_MODEL = "gemini-3.8-flash";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
